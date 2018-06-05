@@ -5,15 +5,15 @@ import styles from './Panel.css';
 class Panel extends Component {
 static propTypes = {
     title: PropTypes.string.isRequired,
-    // onFilterChange: PropTypes.func.isRequired,
 };
 
     render() {
-        const { title } = this.props;
+        const { title, content } = this.props;
 
         return (
             <div className={styles.panel}>
                 <h2 className={styles.title}>{title}</h2>
+                <div>{content}</div>
             </div>
         );
     }

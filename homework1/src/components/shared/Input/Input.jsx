@@ -4,7 +4,7 @@ import styles from './Input.css';
 
 const Input = ({ value, type, name, placeholder, onChange }) => (
   <input
-    className={styles.input}
+    className= {styles.input}
     type={type}
     name={name}
     value={value}
@@ -18,12 +18,14 @@ Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.string
 };
 
 Input.defaultProps = {
+  value: '',
   type: 'text',
-  placeholder: '',
+  onChange: () => {},
+  placeholder: ''
 };
 
 export default Input;

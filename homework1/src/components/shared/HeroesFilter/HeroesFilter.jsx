@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Input from './shared/Input';
-import styles from './NotesFilter.css';
+import Input from '../Input/Input.jsx';
+import styles from './HeroesFilter.css';
 
-export default class NotesFilter extends Component {
+export default class HeroesFilter extends Component {
   static propTypes = {
     filter: PropTypes.string.isRequired,
     onFilterChange: PropTypes.func.isRequired,
@@ -22,7 +22,7 @@ export default class NotesFilter extends Component {
           name="text"
           value={filter}
           onChange={this.handleChange}
-          placeholder="Filter notes by content..."
+          placeholder="Search by name..."
         />
       </form>
     );

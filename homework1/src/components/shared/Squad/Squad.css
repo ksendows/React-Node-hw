@@ -1,15 +1,13 @@
 /* @value primary-dark-color from '../theme/colors.css'; */
 
-.hero {
+.squad {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
-.actions {
-  display: flex;
+.column {
+  width: 50%;
 }
-
 .text {
   height: 100%;
   display: flex;
@@ -17,6 +15,6 @@
   flex-grow: 1;
   margin: 0;
   margin-right: 24px;
-  color: darkgrey;
+  color: black;
 }
 
