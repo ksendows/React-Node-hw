@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Input from '../Input/Input.jsx';
+import Input from '../Input/Input';
 import styles from './HeroesFilter.css';
 
 export default class HeroesFilter extends Component {

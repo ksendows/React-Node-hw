@@ -1,16 +1,17 @@
-import React, { Component, Fragment } from 'react';
-import Panel from './shared/Panel/Panel.jsx';
-import List from './shared/List/List.jsx';
-import HeroesFilter from './shared/HeroesFilter/HeroesFilter.jsx';
-import Button from './shared/Button/Button.jsx';
-import Info from './shared/Info/Info.jsx';
-import Form from './shared/Form/Form.jsx';
-import { getAvailableHeroes, getSquadHeroes } from '../utils/selectors.js';
-import { getSquadStats } from '../utils/api.js';
-import styles from './App.css';
+/* eslint-disable*/
 import { v4 } from "uuid";
+import React, { Component, Fragment } from 'react';
+import Panel from './shared/Panel/Panel';
+import List from './shared/List/List';
+import HeroesFilter from './shared/HeroesFilter/HeroesFilter';
+import Button from './shared/Button/Button';
+import Info from './shared/Info/Info';
+import Form from './shared/Form/Form';
+import { getAvailableHeroes, getSquadHeroes } from '../utils/selectors';
+import getSquadStats from '../utils/api';
+import styles from './App.css';
 
-const heroes = [
+const heroesArr = [
   {
     id: v4(),
     name: "superman",
@@ -79,40 +80,34 @@ const heroes = [
 class App extends Component {
   
   state = {
-    heroes: heroes,
+    heroes: heroesArr,
     filter: '',
     squadIds: [],
     savedSquads: []
+  };
+
+  getInfo = id => {
+    const selectedHero = this.state.heroes.filter(hero => hero.id === id)[0];
+    console.log(`Hero's name: ${selectedHero.name}`);
+    console.log(`Speed: ${selectedHero.strength}`);
+    console.log(`Intelligence: ${selectedHero.intelligence}`);
+    console.log(`Speed: ${selectedHero.speed}`);
+  };
+
+  handleAddHero = hero => {
+    this.setState(prevState => ({
+      heroes: [...prevState.heroes, hero]
+    }));
   };
 
   handleFilterChange = str => {
     this.setState({ filter: str });
   };
 
-  handleAddHero = hero => {
-    this.setState(prevState => ( {
-      heroes: [...prevState.heroes, hero]
-    }));
-  };
-  
   deleteHero = id => {
     this.setState(prevState => ({
       heroes: prevState.heroes.filter(hero => hero.id !== id)
-    })); 
-  };
-
-  deleteHeroFromSquad = id => {
-    this.setState(prevState => ({
-      squadIds: prevState.squadIds.filter(heroId => heroId !== id)
     }));
-  };
-
-  getInfo = id => {
-    const hero = this.state.heroes.filter(hero => hero.id === id)[0];
-    console.log(`Hero's name: ${hero.name}`);
-    console.log(`Speed: ${hero.strength}`);
-    console.log(`Intelligence: ${hero.intelligence}`);
-    console.log(`Speed: ${hero.speed}`);
   };
 
   addToSquad = id => {
@@ -120,16 +115,23 @@ class App extends Component {
       squadIds: [...prevState.squadIds, id]
     }));
   };
+  
+
+  deleteHeroFromSquad = id => {
+    this.setState(prevState => ({
+      squadIds: prevState.squadIds.filter(heroId => heroId !== id)
+    }));
+  };
 
   resetSquad = () => {
-    this.setState(prevState => ({
+    this.setState( () => ({
       squadIds: []
     }));
   };
 
   saveSquad = () => {
     if (this.state.squadIds.length === 0) return;
-    let squad = {
+    const squad = {
       id: v4(),
       heroes: getSquadHeroes(this.state.heroes, this.state.squadIds)
     }
@@ -140,7 +142,6 @@ class App extends Component {
   };
 
   deleteSquad = id => {
-    // debugger;
     this.setState(prevState => ({
       savedSquads: prevState.savedSquads.filter(squad => squad.id !== id)
     }));
@@ -169,7 +170,7 @@ class App extends Component {
               <List 
                 name="hero" 
                 data={availableHeroes} 
-                additable={true} 
+                additable 
                 onAddToSquad={this.addToSquad}
                 onDeleteHero={this.deleteHero}
                 onGetInfo={this.getInfo}

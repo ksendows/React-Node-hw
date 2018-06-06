@@ -1,9 +1,9 @@
+import { v4 } from "uuid";
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
-import Button from '../Button/Button.jsx';
-import Input from '../Input/Input.jsx';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
 import styles from './Form.css';
-import { v4 } from "uuid";
 
 const INITIAL_STATE = {
   name: '',
@@ -35,14 +35,13 @@ export default class Form extends Component {
     }
     this.props.onAddHero(hero);
 
-    this.setState({ ...INITIAL_STATE });
-    return;
+    this.setState({ ...INITIAL_STATE })
   };
 
   selectRender(skill) {
     return (
       <select onChange={this.handleSelectChange} name = {skill} className={styles.select}>
-      {[...Array(10)].map((x, i) => <option value={i + 1} key={i}>{i + 1}</option>)}
+      {[...Array(10)].map((x, i) => <option value={i + 1} key={i.toString()}>{i + 1}</option>)}
       </select>
     )
   };
@@ -68,15 +67,15 @@ export default class Form extends Component {
           value={this.state.name} 
           onChange={this.handleInputChange}
         />
-        <label className={styles.label}>
+        <div className={styles.label}>
           Strength: {this.selectRender("strength")}
-        </label>
-        <label className={styles.label}>
+        </div>
+        <div className={styles.label}>
           Intelligence: {this.selectRender("intelligence")}
-        </label>
-        <label className={styles.label}>
+        </div>
+        <div className={styles.label}>
           Speed: {this.selectRender("speed")}
-        </label>
+        </div>
         <Button type="submit" text="Add Hero"/>
       </form>
     );

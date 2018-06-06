@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../Icon/Icon.jsx';
+import Icon from '../Icon/Icon';
 import styles from './Hero.css';
 import infoIcon from '../Icon/icons/info.svg';
 import deleteIconX from '../Icon/icons/delete_x.svg';
@@ -46,51 +46,3 @@ export default class Hero extends Component {
         );
   }
 }
-
-
-// state = { isBeingEdited: false };
-
-  // static getDerivedStateFromProps() {
-  //   console.log('[NOTE]: getDerivedStateFromProps');
-  //   return null;
-  // }
-
-  // componentDidMount() {
-  //   console.log('[NOTE]: componentDidMount');
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // console.log('[NOTE]: shouldComponentUpdate');
-
-  //   const propsChanged = nextProps.text !== this.props.text;
-  //   const stateChanged = this.state.isBeingEdited !== nextState.isBeingEdited;
-
-  //   return propsChanged || stateChanged;
-  // }
-
-  // getSnapshotBeforeUpdate() {
-  //   console.log('[NOTE]: getSnapshotBeforeUpdate');
-
-  //   return {
-  //     scrollPos: 10,
-  //   };
-  // }
-
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   console.log('[NOTE]: componentDidUpdate');
-  // }
-
-  // componentWillUnmount() {
-  //   console.log('[NOTE]: componentWillUnmount');
-  // }
-
-  // onEditStart = () => this.setState({ isBeingEdited: true });
-
-  // onEditEnd = () => this.setState({ isBeingEdited: false });
-
-  // handleDelete = () => this.props.onDeleteNote(this.props.id);
-
-  // handleUpdate = text => {
-  //   this.props.onUpdateNote({ id: this.props.id, text });
-  //   this.onEditEnd();
-  // };

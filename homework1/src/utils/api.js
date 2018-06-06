@@ -1,4 +1,4 @@
-export const getSquadStats = (squadHeroes) => {
+const getSquadStats = (squadHeroes) => {
   const squadStats = {
     strength: 0,
     intelligence: 0,
@@ -14,6 +14,8 @@ export const getSquadStats = (squadHeroes) => {
   } 
   return squadStats;
 }
+
+export default getSquadStats;
 
 
 // import axios from 'axios';

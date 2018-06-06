@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../Icon/Icon.jsx';
+import Icon from '../Icon/Icon';
 import deleteIconX from '../Icon/icons/delete_x.svg';
 import styles from './Squad.css';
 
@@ -15,10 +15,9 @@ export default class Squad extends Component {
     onDeleteSquad: PropTypes.func.isRequired
   };
 
-  sumOfProps(squad, skill) {
+  static sumOfProps(squad, skill) {
     return squad.reduce(
-      (accumulator, currentValue) => accumulator + parseInt(currentValue[skill],10), 0
-    );
+      (accumulator, currentValue) => accumulator + parseInt(currentValue[skill],10), 0);
   }
 
   handleDeleteSquad = () => this.props.onDeleteSquad(this.props.id);
@@ -45,13 +44,13 @@ export default class Squad extends Component {
               <p className={styles.text}>Stats:</p>
           <ul className={styles.list_stat}>
                 <li key={1} className={styles.item_stat}>
-                  Strength: {this.sumOfProps(heroes, "strength")}
+                  Strength: {Squad.sumOfProps(heroes, "strength")}
                 </li>
                 <li key={2} className={styles.item_stat}>
-                  Intelligence: {this.sumOfProps(heroes, "intelligence")}
+                  Intelligence: {Squad.sumOfProps(heroes, "intelligence")}
                 </li>
                 <li key={3} className={styles.item_stat}>
-                  Speed: {this.sumOfProps(heroes, "speed")}
+                  Speed: {Squad.sumOfProps(heroes, "speed")}
                 </li>
               </ul>
             </div>
