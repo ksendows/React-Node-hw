@@ -29,11 +29,10 @@ export default class Form extends Component {
     const hero = {
       id: v4(),
       name: this.state.name,
-      strength: this.state.strength,
-      intelligence: this.state.intelligence,
-      speed: this.state.speed
+      strength: parseInt(this.state.strength, 10),
+      intelligence: parseInt(this.state.intelligence, 10),
+      speed: parseInt(this.state.speed, 10)
     }
-    // console.log(hero);
     this.props.onAddHero(hero);
 
     this.setState({ ...INITIAL_STATE });
@@ -42,7 +41,7 @@ export default class Form extends Component {
 
   selectRender(skill) {
     return (
-      <select onChange={this.handleSelectChange} name = {skill}>
+      <select onChange={this.handleSelectChange} name = {skill} className={styles.select}>
       {[...Array(10)].map((x, i) => <option value={i + 1} key={i}>{i + 1}</option>)}
       </select>
     )
@@ -69,9 +68,15 @@ export default class Form extends Component {
           value={this.state.name} 
           onChange={this.handleInputChange}
         />
-        Strength: {this.selectRender("strength")}
-        Intelligence: {this.selectRender("intelligence")}
-        Speed: {this.selectRender("speed")}
+        <label className={styles.label}>
+          Strength: {this.selectRender("strength")}
+        </label>
+        <label className={styles.label}>
+          Intelligence: {this.selectRender("intelligence")}
+        </label>
+        <label className={styles.label}>
+          Speed: {this.selectRender("speed")}
+        </label>
         <Button type="submit" text="Add Hero"/>
       </form>
     );

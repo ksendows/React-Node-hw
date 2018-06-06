@@ -13,11 +13,14 @@ export default class Hero extends Component {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     additable: PropTypes.bool.isRequired,
-    // onDeleteHero: PropTypes.func.isRequired,
-    // onGetInfo: PropTypes.func.isRequired
+    onDeleteHero: PropTypes.func,
+    onDeleteHeroFromSquad: PropTypes.func,
+    onGetInfo: PropTypes.func.isRequired
   };
 
   handleDelete = () => this.props.onDeleteHero(this.props.id);
+
+  handleDeleteFromSquad = () => this.props.onDeleteHeroFromSquad(this.props.id);
   
   handleInfo = () => this.props.onGetInfo(this.props.id);
 
@@ -25,7 +28,7 @@ export default class Hero extends Component {
 
   render() {
 
-    const { name, additable, onDeleteHero, onGetInfo, onAddToSquad } = this.props;
+    const { name, additable } = this.props;
 
     return (
           <div className={styles.hero}>
@@ -35,7 +38,7 @@ export default class Hero extends Component {
               {additable && <Icon onClick={this.handleAddToSquad} src={addUserIcon}/>}
               {additable ? 
                 <Icon onClick={this.handleDelete} src={deleteIconX}/> :
-                <Icon onClick={this.handleDelete} src={deleteIcon} />
+                <Icon onClick={this.handleDeleteFromSquad} src={deleteIcon} />
               }
               <Icon onClick={this.handleInfo} src={infoIcon}/>
             </div>
