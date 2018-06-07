@@ -1,0 +1,38 @@
+.squad {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 30px;
+}
+.squad__icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.column {
+  width: 50%;
+}
+.text {
+  margin: 0;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+.list {
+  padding: 20px;
+}
+.list_stat {
+  padding: 20px 0;
+}
+.item {
+  list-style-type: square;
+  color:darkgrey;
+}
+.item_stat {
+  list-style: none;
+  text-align: center;
+  color:darkgrey;
+}
+

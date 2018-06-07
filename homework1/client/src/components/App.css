@@ -1,0 +1,10 @@
+.title {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100px;
+  padding: 15px;
+}
