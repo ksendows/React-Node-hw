@@ -55,6 +55,7 @@
     "lint:fix-css": "stylelint src/**/*.css --fix",
     "lint:fix": "npm run lint:fix-js && npm run lint:fix-css"
   },
+  "proxy": "http://localhost:3001/",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

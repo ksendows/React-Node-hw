@@ -12,12 +12,14 @@ const INITIAL_STATE = {
 };
 
 export default class Form extends Component {
-  
   static propTypes = {
     onAddHero: PropTypes.func.isRequired
   };
 
-  state = { ...INITIAL_STATE };
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -74,7 +76,7 @@ export default class Form extends Component {
         <div className={styles.label}>
           Speed: {this.selectRender("speed")}
         </div>
-        <Button type="submit" text="Add Hero"/>
+        <Button type="submit">Add Hero</Button>
       </form>
     );
   }

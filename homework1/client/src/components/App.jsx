@@ -34,8 +34,8 @@ class App extends Component {
 
   fetchData = (stateField) => {
     const url = stateField==="heroes" 
-      ? 'http://localhost:3001/api/heroes' 
-      : 'http://localhost:3001/api/squads';
+      ? '/api/heroes' 
+      : '/api/squads';
 
     this.setState({ isLoading: true });
 
@@ -54,8 +54,8 @@ class App extends Component {
   addData = (dataToAdd, stateField) => {
     
     const url = stateField === "heroes"
-      ? 'http://localhost:3001/api/heroes'
-      : 'http://localhost:3001/api/squads';
+      ? '/api/heroes'
+      : '/api/squads';
 
     this.setState({ isLoading: true });
 
@@ -68,7 +68,7 @@ class App extends Component {
       }
 
       this.setState(prevState => ({
-        [stateField]: [...prevState[stateField], data],
+        [stateField]: [data, ...prevState[stateField]],
         isLoading: false,
       }));
     });
@@ -82,8 +82,8 @@ class App extends Component {
     this.setState({ isLoading: true });
 
     const url = stateField==="heroes"
-      ? "http://localhost:3001/api/heroes/"
-      : "http://localhost:3001/api/squads/"
+      ? "/api/heroes/"
+      : "/api/squads/"
 
     api.deleteData(id, url).then(({ error }) => {
       if (error) {
@@ -146,11 +146,11 @@ class App extends Component {
         {isLoading && <Loader width={80} height={80} />}
         <div className={styles.container}>
 
-          <Panel title="Create Hero" content={
+          <Panel title="Create Hero">
             <Form onAddHero={this.addData}/>
-          } />
+          </Panel>
 
-          <Panel title="Heros" content={
+          <Panel title="Heros">
             <Fragment>
               <HeroesFilter onFilterChange={this.handleFilterChange} filter={filter} />
               <List 
@@ -162,12 +162,12 @@ class App extends Component {
                 onGetInfo={this.getInfo}
               />
             </Fragment>
-          } />
+          </Panel>
 
-          <Panel title="Squad Editor" content={
+          <Panel title="Squad Editor">
             <Fragment>
-              <Button text="Save Squad" onClick={this.saveSquad}/>
-              <Button text="Reset Editor" onClick={this.resetSquad}/>
+              <Button onClick={this.saveSquad}>Save Squad</Button>
+              <Button onClick={this.resetSquad}>Reset Editor</Button>
               <Info stats={stats}/>
               <List 
                 name="hero" 
@@ -177,16 +177,16 @@ class App extends Component {
                 onDeleteHeroFromSquad={this.deleteHeroFromSquad}
               />
             </Fragment>
-          } />
+          </Panel>
 
-          <Panel title="Saved Squad" content={
+          <Panel title="Saved Squad">
             <List 
               name="squad" 
               data={squads} 
               additable={false}
               onDeleteSquad={this.deleteData}
             />
-          } />
+          </Panel>
 
         </div>
       </div>

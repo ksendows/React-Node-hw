@@ -23,7 +23,7 @@ List.propTypes = {
       id: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.oneOf(['hero', 'squad']).isRequired,
 };
 
 export default List;
